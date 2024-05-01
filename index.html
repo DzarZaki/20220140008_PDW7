@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="css.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body.dark-mode {
+        background-color: #222;
+        color: #fff;
+      }
+      body {
+        background: #204050;
+      }
+      #container {
+        position: relative;
+        width: 335px;
+        height: 335px;
+        margin: 50px auto;
+      }
+      .ball {
+        position: absolute;
+        z-index: 3;
+        top: -10px;
+        left: -20px;
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        border-radius: 50%;
+        background: lightskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Akatsukidesu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Anime List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="darkModeToggle">
+          <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+        </div>
+      </div>
+    </nav>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="1.png" class="d-block w-100" alt="First Slide">
+        </div>
+        <div class="carousel-item">
+          <img src="2.jpg" class="d-block w-100" alt="Second Slide">
+        </div>
+        <div class="carousel-item">
+          <img src="3.jpg" class="d-block w-100" alt="Third Slide">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+    <h1 class="text-center mt-3">Pengunguman Penting</h1>
+    
+    <div class="container py-4">
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold" style="color: aqua;">Selamat Datang di Akatsukidesu!</h1>
+          <p class="col-md-8 fs-4" style="color: aqua;">
+            Situs web ini merupakan surga bagi para penggemar anime, menyediakan platform yang lengkap
+            untuk streaming dan mengunduh koleksi anime terbaru dan klasik. Pengguna dapat dengan mudah
+            menjelajahi berbagai judul anime dari berbagai genre, mulai dari aksi, petualangan, fantasi, hingga romantis.
+          </p>
+          <button class="btn btn-outline-primary btn-lg">Click Me</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <div class="text-center py-3">
+              <h3>Kontak Kami</h3>
+              <p>DM<br/>Akatsukidesu</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="text-center py-3">
+              <h3>Kunjungi situs yang lain</h3>
+              <p>Konohadesu.wibu</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="text-center py-3">
+              <p>Copyright © 2023</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      const darkModeToggle = document.getElementById('darkModeToggle');
+
+      darkModeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+
+      window.onload = function() {
+        let path = anime.path('path');
+
+        let ballAnimation = anime({
+          targets: '.ball',
+          translateX: path,
+          translateY: path,
+          duration: 3000,
+          loop: true,
+          easing: 'linear'
+        });
+
+        let pathAnimation = anime({
+          targets: 'path',
+          opacity: [0, 1],
+          duration: 2000,
+          loop: true,
+          easing: 'linear',
+          direction: 'alternate'
+        });
+      };
+    </script>
+
+    <div id="container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="334.5" height="334.469" viewBox="0 0 334.5 334.469">
+        <defs>
+          <style>.cls-1 { fill: none; stroke: tomato; stroke-width: 1px; fill-rule: evenodd; }</style>
+        </defs>
+        <path class="cls-1" d="M148.459 300.622q-11.814-66.22-69.547-31.7t-19.262-20.658q38.471-55.179-26.761-71.593t.988-28.227q66.221-11.814 31.7-69.547t20.658-19.262q55.179 38.471 71.593-26.761t28.227.988q11.814 66.219 69.547 31.7t19.262 20.658q-38.472 55.179 26.761 71.593t-.988 28.227q-66.219 11.814-31.7 69.547t-20.658 19.263q-55.179-38.472-71.593 26.761t-28.227-.989z"/>
+      </svg>
+      <div class="ball ball-blue"></div>
+    </div>
+  </body>
+</html>
